@@ -795,6 +795,37 @@ const toolbox = {
             }
           }
         },
+        {
+          'kind': 'block',
+          'type': 'G_zero',
+          'inputs': {
+            'X' : {
+              'shadow': {
+                'type': 'math_number',
+                'fields': {
+                  'X': 0,
+                },
+              }
+            },
+            'Y' : {
+              'shadow': {
+                'type': 'math_number',
+                'fields': {
+                  'Y': 0,
+                },
+              }
+            },
+            'Z' : {
+              'shadow': {
+                'type': 'math_number',
+                'fields': {
+                  'Z': 0,
+                },
+              }
+            }
+
+          }
+        },
         
         
         // {

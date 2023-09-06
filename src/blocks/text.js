@@ -95,12 +95,39 @@ const g0 =
           "tooltip": "",
           "helpUrl": ""
         }
+
+        const G_zero =
+        {
+          "type": "G_zero",
+          "message0": "X %1 Y %2 Z %3",
+          "args0": [
+            {
+              "type": "input_value",
+              "name": "X",
+              "check": "Number"
+            },
+            {
+              "type": "input_value",
+              "name": "Y",
+              "check": "Number"
+            },
+            {
+              "type": "input_value",
+              "name": "Z",
+              "check": "Number"
+            }
+          ],
+          "inputsInline": true,
+          "colour": 120,
+          "tooltip": "",
+          "helpUrl": ""
+        }
       
 
 // Create the block definitions for the JSON-only blocks.
 // This does not register their definitions with Blockly.
 // This file has no side effects!
 const blocks = Blockly.common.createBlockDefinitionsFromJsonArray(
-    [addText,test,write_file]);
+    [addText,test,write_file,G_zero]);
 
     module.exports = {blocks};

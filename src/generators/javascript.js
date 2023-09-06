@@ -128,4 +128,27 @@ generator['write_file'] = function(block) {
 };
 
 
+generator['G_zero'] = function(block) {
+  const X = javascriptGenerator.valueToCode(block, 'X',
+    javascriptGenerator.ORDER_ATOMIC) || '\'0\'';
+  const Y = javascriptGenerator.valueToCode(block, 'Y',
+    javascriptGenerator.ORDER_ATOMIC) || '\'0\'';
+  const Z = javascriptGenerator.valueToCode(block, 'Z',
+    javascriptGenerator.ORDER_ATOMIC) || '\'0\'';
+
+    const G_zero = javascriptGenerator.provideFunction_(
+      'G_zero',
+      ['function ' + javascriptGenerator.FUNCTION_NAME_PLACEHOLDER_ +
+          '(X,Y,Z) {',
+          'data_gZero = `${X} ${Y} ${Z}`;',
+          'writeSerialPortSimple(port,data_gZero);',
+          '}'
+        ]
+    )
+
+    // Generate the function call for this block.
+    const code = `${G_zero}(${X},${Y},${Z});\n`;
+    return code;
+}
+
 module.exports = {generator}

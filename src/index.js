@@ -18,6 +18,7 @@ const {javascriptGenerator} = require('blockly/javascript');
 const { save, load } = require('./serialization');
 const { toolbox } = require('./toolbox');
 const fs = require('fs');
+const {makeSerialPort , writeSerialPortSimple} = require("./util/Sender")
 
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks(blocks);
@@ -27,6 +28,7 @@ Object.assign(javascriptGenerator, generator);
 const codeDiv = document.getElementById('generatedCode').firstChild;
 const outputDiv = document.getElementById('output');
 const blocklyDiv = document.getElementById('blocklyDiv');
+const run_btn = document.getElementById('run_btn');
 
 // var coloursFlyoutCallback = function(ws) {
 //   // Returns an array of hex colours, e.g. ['#4286f4', '#ef0447']
@@ -64,7 +66,10 @@ const runCode = () => {
 
 // Load the initial state from storage and run the code.
 //load(ws);
-runCode();
+//runCode();
+
+//here we are making the new port
+port = makeSerialPort();
 
 // Every time the workspace changes state, save the changes to storage.
 ws.addChangeListener((e) => {
@@ -84,7 +89,11 @@ ws.addChangeListener((e) => {
     ws.isDragging()) {
     return;
   }
-  runCode();
+  //runCode();
 });
+
+run_btn.addEventListener('click',()=>{
+  runCode();
+})
 
 
