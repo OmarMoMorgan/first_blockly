@@ -1,0 +1,19 @@
+{
+  "name": "custom-renderer-codelab",
+  "version": "1.0.0",
+  "description": "A sample app using Blockly",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "keywords": [
+    "blockly"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "blockly": "^9.2.0",
+    "electron": "^26.1.0"
+  }
+}
