@@ -96,9 +96,9 @@ generator['test'] = function(block) {
 
 generator['write_file'] = function(block) {
   console.log("i have enterd the write a file function")
-  var path = javascriptGenerator.valueToCode(block, 'TEXT',
+  var path = javascriptGenerator.valueToCode(block, 'PATH',
       javascriptGenerator.ORDER_NONE) || 'omar';
-  const content = javascriptGenerator.valueToCode(block, 'TEXT',
+  const content = javascriptGenerator.valueToCode(block, 'CONTENT',
       javascriptGenerator.ORDER_NONE) || '\'hey\'';
 
   // const write_file_1 = generator.provideFunction_('write_file', `
@@ -106,17 +106,20 @@ generator['write_file'] = function(block) {
     
   // }
   // `);
-  path = '\'' + (path + ".txt") + '\'';
+  //path = '\'' + (path + ".txt") + '\'';
+  path = path.slice(1, -1);
+  path = path + ".txt";
+  path = '\' ' + path + '\'';
 
   const write_file = javascriptGenerator.provideFunction_(
     'write_file',
     ['function ' + javascriptGenerator.FUNCTION_NAME_PLACEHOLDER_ +
-        '(path, content) {'+
-    '  fs.writeFile(path, content, err => {'+
-    '  if (err) {'+
-    '  console.error(err);'+
-    '} '+
-    '});'+
+        '(path, content) {',
+    '  fs.writeFile(path, content, err => {',
+    '  if (err) {',
+    '  console.error(err);',
+    '} ',
+    '});',
     '}'
   ]);
 
