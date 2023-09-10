@@ -1,0 +1,23 @@
+const { SerialPort } = require('serialport')
+
+async function listSerialPorts() {
+    // await SerialPort.list().then((ports, err) => {
+    //     if(err){
+    //         alert("there was an error" + err);
+    //         return [];
+    //     }
+    //     console.log("ports" , ports);
+    //     return ports
+    // })
+    try {
+        const ports = await SerialPort.list();
+        const paths = ports.map(port => port.path);
+        console.log("ports", ports);
+        return paths;
+    } catch (err) {
+        alert("there was an error" + err);
+        return []; // or return null or any other appropriate error handling value
+    }
+}
+
+module.exports = {listSerialPorts};

@@ -1,10 +1,11 @@
 const { SerialPort } = require('serialport')
 
-function makeSerialPort() {
+function makeSerialPort(path_port) {
     port = new SerialPort({
-    path:'COM5', //this hard coded and will be changed in the future of course
+    path:path_port, //this hard coded and will be changed in the future of course
     baudRate: 9600,
     });
+    console.log("port made")
     return port;
 }
 

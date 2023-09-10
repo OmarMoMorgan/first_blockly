@@ -19,6 +19,7 @@ const { save, load } = require('./serialization');
 const { toolbox } = require('./toolbox');
 const fs = require('fs');
 const {makeSerialPort , writeSerialPortSimple} = require("./util/Sender")
+const {listSerialPorts} = require("./util/listSerialPorts");
 
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks(blocks);
@@ -29,26 +30,10 @@ const codeDiv = document.getElementById('generatedCode').firstChild;
 const outputDiv = document.getElementById('output');
 const blocklyDiv = document.getElementById('blocklyDiv');
 const run_btn = document.getElementById('run_btn');
+const Board_port = document.getElementById('Board_port');
 
-// var coloursFlyoutCallback = function(ws) {
-//   // Returns an array of hex colours, e.g. ['#4286f4', '#ef0447']
-//   var colourList = getPalette();
-//   var blockList = [];
-//   for (var i = 0; i < colourList.length; i++) {
-//     blockList.push({
-//       'kind': 'block',
-//       'type': 'colour_picker',
-//       'fields': {
-//         'COLOUR': colourList[i]
-//       }
-//     });
-//   }
-//   return blockList;
-// };
-
-// // Associates the function with the string 'COLOUR_PALETTE'
-// ws.registerToolboxCategoryCallback(
-//    'COLOUR_PALETTE', coloursFlyoutCallback);
+var port;
+var lastPort ="";
 
 const ws = Blockly.inject(blocklyDiv, {toolbox});
 
@@ -69,7 +54,7 @@ const runCode = () => {
 //runCode();
 
 //here we are making the new port
-port = makeSerialPort();
+//port = makeSerialPort();
 
 // Every time the workspace changes state, save the changes to storage.
 ws.addChangeListener((e) => {
@@ -96,4 +81,49 @@ run_btn.addEventListener('click',()=>{
   runCode();
 })
 
+Board_port.addEventListener('click',()=>{
+  // ports = listSerialPorts();
+  // console.log("ports from index" , ports);
+  //boardsReady = [];
+  listSerialPorts()
+    .then(ports => {
+        // Use the 'ports' array here
+        console.log("Received ports", ports);
+        //boardsReady = ports.map((port)=>{
+          //port.path;
+          //console.log(boardsReady);
+        //})
+        while (Board_port.options.length > 0) {
+          Board_port.remove(0);
+      }
+        for(var i = 0; i < ports.length; i++) {
+          var opt = ports[i];
+      
+          var el = document.createElement("option");
+          el.text = opt;
+          el.value = opt;
+      
+          Board_port.add(el);
+        }
+    })
+    
+    if(Board_port.value !== lastPort){
+      lastPort = Board_port.value;
+      port = makeSerialPort(Board_port.value);
+    }
+    // Manually trigger the change event
+//     if(newPort === 0){
+//       const event = new Event('change', {
+//       bubbles: true,
+//       cancelable: true,
+//     });
+//     Board_port.dispatchEvent(event);
+//     newPort =1;
+// }
+    
+})
 
+
+// Board_port.addEventListener('input',()=>{
+//     port = makeSerialPort(Board_port.value);
+// })
