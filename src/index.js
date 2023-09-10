@@ -107,8 +107,8 @@ Board_port.addEventListener('click',()=>{
         }
     })
     
-    if(Board_port.value !== lastPort){
-      lastPort = Board_port.value;
+    lastPort = Board_port.value;
+    if(!port && lastPort != ""){
       port = makeSerialPort(Board_port.value);
     }
     // Manually trigger the change event
