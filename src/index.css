@@ -1,6 +1,8 @@
 body {
     margin: 0;
     max-width: 100vw;
+    height: 100vh; /* Make the body fill the viewport height */
+    overflow: hidden;
 }
 
 pre, code {
@@ -9,39 +11,23 @@ pre, code {
 
 #pageContainer {
     display: flex;
-    /*flex-direction: column*/;
     width: 100%;
     max-width: 100vw;
-    height: 100vh;
-}
-
-#menu {
-    display: flex;
-    justify-content: flex-end; /* Align the button to the right */
-    background-color: #333; /* Background color for the menu */
-    padding: 7px;
-}
-
-#run_btn {
-    background-color: #4CAF50; /* Green background color for the button */
-    color: white; /* Text color for the button */
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
+    height: 90vh;
 }
 
 #blocklyDiv {
-    flex-basis: 70%;
+    flex-basis: 100%;
     height: 100%;
     min-width: 600px;
+    padding: 5px;
 }
 
 #outputPane {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    /*flex: 0 0 400px;*/
-    flex-basis: 30%;
+    width: 300px;
+    flex: 0 0 300px;
     overflow: auto;
     margin: 1rem;
 }
@@ -54,3 +40,31 @@ pre, code {
 #output {
     height: 50%;
 }
+
+#menu {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 7px;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  #dropdown {
+    width: 150px;
+    height: 30px;
+    padding: 5px;
+    margin-right: 10px;
+    min-width: 150px;
+  }
+  
+
+  #run_btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px; /* Adjust margin to control spacing */
+  }
+  
