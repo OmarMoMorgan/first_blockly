@@ -154,4 +154,29 @@ generator['G_zero'] = function(block) {
     return code;
 }
 
+generator['G_one'] = function(block) {
+  const X = javascriptGenerator.valueToCode(block, 'X',
+    javascriptGenerator.ORDER_ATOMIC) || '\'0\'';
+  const Y = javascriptGenerator.valueToCode(block, 'Y',
+    javascriptGenerator.ORDER_ATOMIC) || '\'0\'';
+  const Z = javascriptGenerator.valueToCode(block, 'Z',
+    javascriptGenerator.ORDER_ATOMIC) || '\'0\'';
+    const feed_rate = javascriptGenerator.valueToCode(block, 'feed_rate',
+    javascriptGenerator.ORDER_ATOMIC) || '\'0\'';
+
+    const G_one = javascriptGenerator.provideFunction_(
+      'G_one',
+      ['function ' + javascriptGenerator.FUNCTION_NAME_PLACEHOLDER_ +
+          '(X,Y,Z,feed_rate) {',
+          'data_gOne = `${X} ${Y} ${Z} F${feed_rate}`;',
+          'writeSerialPortSimple(port,data_gOne);',
+          '}'
+        ]
+    )
+
+    // Generate the function call for this block.
+    const code = `${G_one}(${X},${Y},${Z},${feed_rate});\n`;
+    return code;
+}
+
 module.exports = {generator}

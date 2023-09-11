@@ -743,7 +743,7 @@ const toolbox = {
               'shadow': {
                 'type': 'text',
                 'fields': {
-                  'TEXT': 'abc',
+                  'TEXT': 'abcd',
                 },
               },
             },
@@ -780,7 +780,7 @@ const toolbox = {
               'shadow': {
                 'type': 'text',
                 'fields': {
-                  'PATH': 'file',
+                  'TEXT': 'file',
                 },
               },
             },
@@ -788,7 +788,7 @@ const toolbox = {
               'shadow': {
                 'type': 'text',
                 'fields': {
-                  'CONTENT': 'HEY',
+                  'TEXT': 'HEY',
                 },
               },
 
@@ -803,7 +803,7 @@ const toolbox = {
               'shadow': {
                 'type': 'math_number',
                 'fields': {
-                  'X': 0,
+                  'NUM': 0,
                 },
               }
             },
@@ -811,7 +811,7 @@ const toolbox = {
               'shadow': {
                 'type': 'math_number',
                 'fields': {
-                  'Y': 0,
+                  'NUM': 0,
                 },
               }
             },
@@ -819,30 +819,53 @@ const toolbox = {
               'shadow': {
                 'type': 'math_number',
                 'fields': {
-                  'Z': 0,
+                  'NUM': 0,
                 },
               }
             }
 
           }
         },
-        
-        
-        // {
-        //   'kind': 'block',
-        //   'type': 'g0',
-        //   'inputs':{
-        //     "X":{
-        //       'shadow': {
-        //         'type': 'text',
-        //         'fields': {
-        //           'X': '5',
-        //         },
-        //       },
-        //     }
-            
-        //   }
-        // }
+
+        {
+          'kind': 'block',
+          'type': 'G_one',
+          'inputs': {
+            'X' : {
+              'shadow': {
+                'type': 'math_number',
+                'fields': {
+                  'NUM': 0,
+                },
+              }
+            },
+            'Y' : {
+              'shadow': {
+                'type': 'math_number',
+                'fields': {
+                  'NUM': 0,
+                },
+              }
+            },
+            'Z' : {
+              'shadow': {
+                'type': 'math_number',
+                'fields': {
+                  'NUM': 0,
+                },
+              }
+            },
+            'feed_rate':{
+              'shadow': {
+                'type': 'math_number',
+                'fields': {
+                  'NUM': 400,
+                },
+              }
+            }
+
+          }
+        },
       ]
     },
   ],

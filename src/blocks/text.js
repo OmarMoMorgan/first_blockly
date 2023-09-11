@@ -99,7 +99,7 @@ const g0 =
         const G_zero =
         {
           "type": "G_zero",
-          "message0": "X %1 Y %2 Z %3",
+          "message0": "Move to X %1 Y %2 Z %3",
           "args0": [
             {
               "type": "input_value",
@@ -117,6 +117,44 @@ const g0 =
               "check": "Number"
             }
           ],
+          'previousStatement': null,
+          'nextStatement': null,
+          "inputsInline": true,
+          "colour": 120,
+          "tooltip": "",
+          "helpUrl": ""
+        }
+
+
+        const G_one =
+        {
+          "type": "G_one",
+          "message0": "Move Linearly to X %1 Y %2 Z %3 Feed rate %4",
+          "args0": [
+            {
+              "type": "input_value",
+              "name": "X",
+              "check": "Number"
+            },
+            {
+              "type": "input_value",
+              "name": "Y",
+              "check": "Number"
+            },
+            {
+              "type": "input_value",
+              "name": "Z",
+              "check": "Number"
+            },
+            {
+              "type": "input_value",
+              "name": "feed_rate",
+              "check": "Number",
+              "min":0
+            }
+          ],
+          'previousStatement': null,
+          'nextStatement': null,
           "inputsInline": true,
           "colour": 120,
           "tooltip": "",
@@ -128,6 +166,6 @@ const g0 =
 // This does not register their definitions with Blockly.
 // This file has no side effects!
 const blocks = Blockly.common.createBlockDefinitionsFromJsonArray(
-    [addText,test,write_file,G_zero]);
+    [addText,test,write_file,G_zero,G_one]);
 
     module.exports = {blocks};
