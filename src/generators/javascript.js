@@ -143,7 +143,7 @@ generator['G_zero'] = function(block) {
       'G_zero',
       ['function ' + javascriptGenerator.FUNCTION_NAME_PLACEHOLDER_ +
           '(X,Y,Z) {',
-          'data_gZero = `${X} ${Y} ${Z}`;',
+          'data_gZero = `G0 X${X} Y${Y} Z${Z}`;',
           'writeSerialPortSimple(port,data_gZero);',
           '}'
         ]
@@ -168,7 +168,7 @@ generator['G_one'] = function(block) {
       'G_one',
       ['function ' + javascriptGenerator.FUNCTION_NAME_PLACEHOLDER_ +
           '(X,Y,Z,feed_rate) {',
-          'data_gOne = `${X} ${Y} ${Z} F${feed_rate}`;',
+          'data_gOne = `G1 X${X} Y${Y} Z${Z} F${feed_rate}`;',
           'writeSerialPortSimple(port,data_gOne);',
           '}'
         ]
