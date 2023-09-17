@@ -50,7 +50,7 @@ const runCode = () => {
 };
 
 // Load the initial state from storage and run the code.
-//load(ws);
+load(ws);
 //runCode();
 
 //here we are making the new port

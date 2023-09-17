@@ -160,12 +160,31 @@ const g0 =
           "tooltip": "",
           "helpUrl": ""
         }
+
+        const G_four_sec =
+        {
+          "type": "G_four_sec",
+          "message0": "pause for %1 seconds",
+          "args0": [
+            {
+              "type": "input_value",
+              "name": "pause_per",
+              "check": "Number"
+            },
+          ],
+          'previousStatement': null,
+          'nextStatement': null,
+          "inputsInline": true,
+          "colour": 120,
+          "tooltip": "",
+          "helpUrl": ""
+        }
       
 
 // Create the block definitions for the JSON-only blocks.
 // This does not register their definitions with Blockly.
 // This file has no side effects!
 const blocks = Blockly.common.createBlockDefinitionsFromJsonArray(
-    [addText,test,write_file,G_zero,G_one]);
+    [addText,test,write_file,G_zero,G_one,G_four_sec]);
 
     module.exports = {blocks};

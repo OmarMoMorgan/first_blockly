@@ -863,7 +863,20 @@ const toolbox = {
                 },
               }
             }
-
+          }
+        },
+        {
+          'kind': 'block',
+          'type': 'G_four_sec',
+          'inputs': {
+            'pause_per' : {
+              'shadow': {
+                'type': 'math_number',
+                'fields': {
+                  'NUM': 1,
+                },
+              }
+            },
           }
         },
       ]

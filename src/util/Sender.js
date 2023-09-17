@@ -44,17 +44,30 @@ function writeSerialPortSimple(port,data){
 }
 
 function JustWrite(port,data){
-    data = data + "\n";
+    const command = data.slice(0,2);
     if (port) {
-        port.write(data, (err) => {
-          if (err) {
-            console.error('Error writing to port:', err);
-          } else {
-            console.log('Data written to arduino:', data);
-            //isReady = 0;
-          }
-        });
+        if(command !== "G4"){
+           onlyWrite(port,data);
+        }else{
+            waitTime = data.slice(data.indexOf('S')+1);
+            console.log("you should wait",Number(waitTime)*1000);
+            setTimeout(()=>{
+                console.log("entered the timeout now");
+                onlyWrite(port,data)},Number(waitTime)*1000);
+        }
     }
+}
+
+function onlyWrite(port,data){
+    data = data + "\n";
+    port.write(data, (err) => {
+        if (err) {
+        console.error('Error writing to port:', err);
+    } else {
+        console.log('Data written to arduino:', data);
+        //isReady = 0;
+    }
+    });
 }
 
 module.exports = {makeSerialPort , writeSerialPortSimple};

@@ -179,4 +179,23 @@ generator['G_one'] = function(block) {
     return code;
 }
 
+generator['G_four_sec'] = function(block) {
+  const pause_per = javascriptGenerator.valueToCode(block, 'pause_per',
+    javascriptGenerator.ORDER_ATOMIC) || '\'0\'';
+  
+    const G_four_sec = javascriptGenerator.provideFunction_(
+      'G_four_sec',
+      ['function ' + javascriptGenerator.FUNCTION_NAME_PLACEHOLDER_ +
+          '(pause_per) {',
+          'data_gFour_s = `G4 S${pause_per}`;',
+          'writeSerialPortSimple(port,data_gFour_s);',
+          '}'
+        ]
+    )
+
+    // Generate the function call for this block.
+    const code = `${G_four_sec}(${pause_per});\n`;
+    return code;
+}
+
 module.exports = {generator}
