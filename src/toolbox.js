@@ -733,7 +733,8 @@ const toolbox = {
     {
       'kind': 'category',
       'name': 'test',
-      'categorystyle': 'new',
+      //'categorystyle': 'new',
+      "colour": "100",
       'contents':[
         {
           'kind': 'block',
@@ -882,6 +883,7 @@ const toolbox = {
       ]
     },
   ],
+  
 };
 
 module.exports = {toolbox};

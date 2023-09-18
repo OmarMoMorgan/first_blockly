@@ -1,6 +1,7 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 // include the Node.js 'path' module at the top of your file
 const path = require('path')
+//require('@electron/remote/main').initialize()
 
 
 const createWindow = () => {
@@ -14,6 +15,7 @@ const createWindow = () => {
             nodeIntegration: true,
             contextIsolation: false,
             sandbox: false,
+            enableRemoteModule: true
         }
     })
   
@@ -22,7 +24,11 @@ const createWindow = () => {
 
 
   app.whenReady().then(() => {
-    createWindow()
+    createWindow();
+    ipcMain.on('open-new-window', (event, arg) => {
+      const newWindow = new BrowserWindow({ width: 600, height: 400 });
+      newWindow.loadFile('src/custom_eqn.html'); // Load the HTML file for the new window.
+    });
   })
 
 

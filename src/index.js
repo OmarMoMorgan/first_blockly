@@ -20,6 +20,11 @@ const { toolbox } = require('./toolbox');
 const fs = require('fs');
 const {makeSerialPort , writeSerialPortSimple} = require("./util/Sender")
 const {listSerialPorts} = require("./util/listSerialPorts");
+const { dialog } = require('electron');
+const { log } = require('console');
+require('./custom_category_es6');
+const { ipcRenderer } = require('electron');
+require("./custom-dialog");
 
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks(blocks);
@@ -31,11 +36,13 @@ const outputDiv = document.getElementById('output');
 const blocklyDiv = document.getElementById('blocklyDiv');
 const run_btn = document.getElementById('run_btn');
 const Board_port = document.getElementById('Board_port');
+const custom_eqn = document.getElementById('custom_eqn');
 
 var port;
 var lastPort ="";
 
 const ws = Blockly.inject(blocklyDiv, {toolbox});
+
 
 // This function resets the code and output divs, shows the
 // generated code from the workspace, and evals the code.
@@ -127,3 +134,19 @@ Board_port.addEventListener('click',()=>{
 // Board_port.addEventListener('input',()=>{
 //     port = makeSerialPort(Board_port.value);
 // })
+
+
+
+
+
+custom_eqn.addEventListener('click', () => {
+    ipcRenderer.send('open-new-window');
+});
+
+
+
+
+
+
+
+
