@@ -26,7 +26,14 @@ const createWindow = () => {
   app.whenReady().then(() => {
     createWindow();
     ipcMain.on('open-new-window', (event, arg) => {
-      const newWindow = new BrowserWindow({ width: 600, height: 400 });
+      const newWindow = new BrowserWindow({ width: 900, 
+        height: 600,
+        webPreferences:{
+        nodeIntegration: true,
+        contextIsolation: false,
+        sandbox: false,
+        enableRemoteModule: true
+    } });
       newWindow.loadFile('src/custom_eqn.html'); // Load the HTML file for the new window.
     });
   })

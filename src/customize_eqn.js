@@ -4,31 +4,26 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-// import * as Blockly from 'blockly';
-// import {blocks} from './blocks/text';
-// import {generator} from './generators/javascript';
-// import {javascriptGenerator} from 'blockly/javascript';
-// import {save, load} from './serialization';
-// import {toolbox} from './toolbox';
-// import './index.css';
+
 const Blockly = require('blockly');
-const { blocks } = require('./blocks/text');
-const { generator } = require('./generators/javascript');
+const { blocks } = require('./blocks/custom_eqn_blocks');
+const { generator } = require('./generators/almostCgen');
 const {javascriptGenerator} = require('blockly/javascript');
-const { save, load } = require('./serialization');
-const { toolbox } = require('./toolbox');
+const { save, load } = require('./util/newSerialization');
+const { toolbox } = require('./Toolboxes/custom_win_toolbox');
 const fs = require('fs');
-const {makeSerialPort , writeSerialPortSimple} = require("./util/Sender")
+//const {makeSerialPort , writeSerialPortSimple} = require("./util/Sender")
+const { SerialPort } = require('serialport')
 const {listSerialPorts} = require("./util/listSerialPorts");
-const { dialog } = require('electron');
-const { log } = require('console');
 require('./custom_category_es6');
-const { ipcRenderer } = require('electron');
 require("./custom-dialog");
+const {WriteKinematicsFile} = require('./util/WriteInverseKinematics');
 
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks(blocks);
 Object.assign(javascriptGenerator, generator);
+
+
 
 // Set up UI elements and inject Blockly
 const codeDiv = document.getElementById('generatedCode').firstChild;
@@ -36,7 +31,6 @@ const outputDiv = document.getElementById('output');
 const blocklyDiv = document.getElementById('blocklyDiv');
 const run_btn = document.getElementById('run_btn');
 const Board_port = document.getElementById('Board_port');
-const custom_eqn = document.getElementById('custom_eqn');
 
 var port;
 var lastPort ="";
@@ -52,8 +46,9 @@ const runCode = () => {
   codeDiv.innerText = code;
 
   outputDiv.innerHTML = '';
+  WriteKinematicsFile(code);
 
-  eval(code);
+  //eval(code);
 };
 
 // Load the initial state from storage and run the code.
@@ -116,37 +111,14 @@ Board_port.addEventListener('click',()=>{
     
     lastPort = Board_port.value;
     if(!port && lastPort != ""){
-      port = makeSerialPort(Board_port.value);
+        port = new SerialPort({
+            path:path_port, 
+            baudRate: 115200,
+            });
     }
-    // Manually trigger the change event
-//     if(newPort === 0){
-//       const event = new Event('change', {
-//       bubbles: true,
-//       cancelable: true,
-//     });
-//     Board_port.dispatchEvent(event);
-//     newPort =1;
-// }
+
     
 })
-
-
-// Board_port.addEventListener('input',()=>{
-//     port = makeSerialPort(Board_port.value);
-// })
-
-
-
-
-
-custom_eqn.addEventListener('click', () => {
-    ipcRenderer.send('open-new-window');
-});
-
-
-
-
-
 
 
 

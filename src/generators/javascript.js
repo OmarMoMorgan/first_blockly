@@ -198,4 +198,17 @@ generator['G_four_sec'] = function(block) {
     return code;
 }
 
+generator['variables_get'] = function (block) {
+  // Retrieve the variable name from the block
+  var variableName = Blockly.JavaScript.variableDB_.getName(
+    block.getFieldValue('VAR'),
+    Blockly.Variables.NAME_TYPE
+  );
+  
+  // Customize the code generation to add text to the string
+  var appendString = " = 5"; // Replace with the text you want to add
+  console.log("the custom var is now working ")
+  return [variableName + ' + "' + appendString + '"', Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 module.exports = {generator}
