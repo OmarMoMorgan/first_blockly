@@ -179,13 +179,62 @@ const g0 =
           "tooltip": "",
           "helpUrl": ""
         }
+
+        const G_ninety =
+        {
+          "type": "G_ninety",
+          "message0": "Switch to Absloute Mode",
+          "args0": [
+            
+          ],
+          'previousStatement': null,
+          'nextStatement': null,
+          "inputsInline": true,
+          "colour": 120,
+          "tooltip": "",
+          "helpUrl": ""
+        }
+
+        const G_ninetyOne =
+        {
+          "type": "G_ninetyOne",
+          "message0": "Switch to Relative Mode",
+          "args0": [
+            
+          ],
+          'previousStatement': null,
+          'nextStatement': null,
+          "inputsInline": true,
+          "colour": 120,
+          "tooltip": "",
+          "helpUrl": ""
+        }
+
+        const M_oneHunderedSix =
+        {
+          "type": "M_oneHunderedSix",
+          "message0": "Move gripper to angle %1 ",
+          "args0": [
+            {
+              "type": "input_value",
+              "name": "MoveAngle",
+              "check": "Number"
+            },
+          ],
+          'previousStatement': null,
+          'nextStatement': null,
+          "inputsInline": true,
+          "colour": 120,
+          "tooltip": "",
+          "helpUrl": ""
+        }
   
       
 // Create the block definitions for the JSON-only blocks.
 // This does not register their definitions with Blockly.
 // This file has no side effects!
 const blocks = Blockly.common.createBlockDefinitionsFromJsonArray(
-    [addText,test,write_file,G_zero,G_one,G_four_sec]);
+    [addText,test,write_file,G_zero,G_one,G_four_sec,G_ninety,G_ninetyOne,M_oneHunderedSix]);
 
 
 

@@ -198,17 +198,71 @@ generator['G_four_sec'] = function(block) {
     return code;
 }
 
-generator['variables_get'] = function (block) {
-  // Retrieve the variable name from the block
-  var variableName = Blockly.JavaScript.variableDB_.getName(
-    block.getFieldValue('VAR'),
-    Blockly.Variables.NAME_TYPE
-  );
+// generator['variables_get'] = function (block) {
+//   // Retrieve the variable name from the block
+//   var variableName = Blockly.JavaScript.variableDB_.getName(
+//     block.getFieldValue('VAR'),
+//     Blockly.Variables.NAME_TYPE
+//   );
   
-  // Customize the code generation to add text to the string
-  var appendString = " = 5"; // Replace with the text you want to add
-  console.log("the custom var is now working ")
-  return [variableName + ' + "' + appendString + '"', Blockly.JavaScript.ORDER_ATOMIC];
-};
+//   // Customize the code generation to add text to the string
+//   var appendString = " = 5"; // Replace with the text you want to add
+//   console.log("the custom var is now working ")
+//   return [variableName + ' + "' + appendString + '"', Blockly.JavaScript.ORDER_ATOMIC];
+// };
+
+generator['G_ninety'] = function(block) {
+  
+    const G_ninety = javascriptGenerator.provideFunction_(
+      'G_ninety',
+      ['function ' + javascriptGenerator.FUNCTION_NAME_PLACEHOLDER_ +
+          '() {',
+          'data_gNinety = `G90`;',
+          'writeSerialPortSimple(port,data_gNinety);',
+          '}'
+        ]
+    )
+
+    // Generate the function call for this block.
+    const code = `${G_ninety}();\n`;
+    return code;
+}
+
+generator['G_ninetyOne'] = function(block) {
+  
+  const G_ninetyOne = javascriptGenerator.provideFunction_(
+    'G_ninetyOne',
+    ['function ' + javascriptGenerator.FUNCTION_NAME_PLACEHOLDER_ +
+        '() {',
+        'data_gNinetyOne = `G91`;',
+        'writeSerialPortSimple(port,data_gNinetyOne);',
+        '}'
+      ]
+  )
+
+  // Generate the function call for this block.
+  const code = `${G_ninetyOne}();\n`;
+  return code;
+}
+
+generator['M_oneHunderedSix'] = function(block) {
+  const MoveAngle = javascriptGenerator.valueToCode(block, 'MoveAngle',
+    javascriptGenerator.ORDER_ATOMIC) || '\'0\'';
+  
+    const M_oneHunderedSix = javascriptGenerator.provideFunction_(
+      'M_oneHunderedSix',
+      ['function ' + javascriptGenerator.FUNCTION_NAME_PLACEHOLDER_ +
+          '(MoveAngle) {',
+          'data_MHunderedSix = `M106 S${MoveAngle}`;',
+          'writeSerialPortSimple(port,data_MHunderedSix);',
+          '}'
+        ]
+    )
+
+    // Generate the function call for this block.
+    const code = `${M_oneHunderedSix}(${MoveAngle});\n`;
+    return code;
+}
+
 
 module.exports = {generator}
