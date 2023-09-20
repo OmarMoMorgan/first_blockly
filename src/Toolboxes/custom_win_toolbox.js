@@ -163,6 +163,76 @@ const toolbox = {
             'categorystyle': 'variable_category',
             'custom': 'VARIABLE',
         },
+        {
+            'kind': 'category',
+            'name': 'DefaultVar',
+            "colour": "100",
+            'contents': [
+                  {
+                    'kind': 'block',
+                    'type': 'BaseAngle',
+                    'deletable': false,
+                    //'movable': false,
+                    "disabled": "true",
+                    'inputs': {
+                      'MotorValue' : {
+                        'shadow': {
+                          'type': 'math_number',
+                          'fields': {
+                            'NUM': 1,
+                          },
+                        }
+                      },
+                    }
+                  },
+                {
+                    'kind': 'block',
+                    'type': 'ShoulderAngle',
+                    'deletable': false,
+                    //'movable': false,
+                    "disabled": "true",
+                    'inputs':{
+                        'MotorValue':{
+                            'shadow': {
+                                'type': 'math_number',
+                                'fields': {
+                                    'NUM': 64,
+                                },
+                            },
+                        }
+                    } 
+                },
+                {
+                    'kind': 'block',
+                    'type': 'ElbowAngle',
+                    'deletable': false,
+                    //'movable': false,
+                    "disabled": "true",
+                    'inputs':{
+                        'MotorValue':{
+                            'shadow': {
+                                'type': 'math_number',
+                                'fields': {
+                                    'NUM': 64,
+                                },
+                            },
+                        }
+                    } 
+                },
+                {
+                    'kind': 'block',
+                    'type': 'getRvalue'
+                },
+                {
+                    'kind': 'block',
+                    'type': 'getHvalue'
+                },
+                {
+                    'kind': 'block',
+                    'type': 'getAvalue'
+                }
+            ]
+        }
     ]
 }
 

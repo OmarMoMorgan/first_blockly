@@ -150,4 +150,59 @@ generator['math_constant_cst'] = function(block){
   return CONSTANTS[block.getFieldValue('CONSTANT')];
 }
 
+
+generator['BaseAngle'] = function(block){
+    const R_var = javascriptGenerator.valueToCode(block, 'MotorValue',
+    javascriptGenerator.ORDER_ASSIGNMENT) || '\'0\'';
+
+    // const G_zero = javascriptGenerator.provideFunction_(
+    //     'G_zero',
+    //     ['function ' + javascriptGenerator.FUNCTION_NAME_PLACEHOLDER_ +
+    //         '(X,Y,Z) {',
+    //         'data_gZero = `G0 X${X} Y${Y} Z${Z}`;',
+    //         'writeSerialPortSimple(port,data_gZero);',
+    //         '}'
+    //       ]
+    //   )
+  
+      // Generate the function call for this block.
+      const code = `Base = ${R_var};\n`;
+      return code;
+}
+
+generator['ShoulderAngle'] = function(block){
+    const H_var = javascriptGenerator.valueToCode(block, 'MotorValue',
+    javascriptGenerator.ORDER_ASSIGNMENT) || '\'0\'';
+
+  
+      // Generate the function call for this block.
+      const code = `Shoulder = ${H_var};\n`;
+      return code;
+}
+
+generator['ElbowAngle'] = function(block){
+    const A_var = javascriptGenerator.valueToCode(block, 'MotorValue',
+    javascriptGenerator.ORDER_ASSIGNMENT) || '\'0\'';
+
+  
+      // Generate the function call for this block.
+      const code = `Elbow = ${A_var};\n`;
+      return code;
+}
+
+generator['getRvalue'] = function(block){
+    const code = 'R';
+    return [code,javascriptGenerator.ORDER_ATOMIC];
+}
+
+generator['getHvalue'] = function(block){
+    const code = 'H';
+    return [code,javascriptGenerator.ORDER_ATOMIC];
+}
+
+generator['getAvalue'] = function(block){
+    const code = 'A';
+    return [code,javascriptGenerator.ORDER_ATOMIC];
+}
+
 module.exports = {generator}

@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path'); // Import the path module
 
 // Create file paths relative to the script's location
-const saveFilePath = path.join(__dirname, 'workspace_save.txt');
-const loadFilePath = path.join(__dirname, 'workspace_load.txt');
+const saveFilePath = path.join(__dirname, '../Saved_Workspaces/DefaultCustomEqnWS.txt');
+const loadFilePath = path.join(__dirname, '../Saved_Workspaces/DefaultCustomEqnWS.txt');
 
 /**
  * Saves the state of the workspace to a text file.

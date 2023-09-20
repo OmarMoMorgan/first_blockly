@@ -286,12 +286,111 @@ const g0 =
             'helpUrl': '%{BKY_MATH_ROUND_HELPURL}',
             'tooltip': '%{BKY_MATH_ROUND_TOOLTIP}',
           }
+
+          const BaseAngle =
+        {
+            "type": "BaseAngle",
+            "message0": "value for base motor %1",
+            "args0": [
+              {
+                "type": "input_value",
+                "name": "MotorValue",
+                "check": "Number"
+              },
+            ],
+            'deletable': false,
+            'previousStatement': null,
+            'nextStatement': null,
+            "inputsInline": true,
+            "colour": 120,
+            "tooltip": "",
+            "helpUrl": ""
+        }
+
+        const ShoulderAngle =
+        {
+          "type": "ShoulderAngle",
+          "message0": "Value for Shoulder motor %1",
+          "args0": [
+            {
+              "type": "input_value",
+              "name": "MotorValue",
+              "check": "Number"
+            },
+          ],
+          'deletable': false,
+          'previousStatement': null,
+          'nextStatement': null,
+          "inputsInline": true,
+          "colour": 120,
+          "tooltip": "",
+          "helpUrl": ""
+        }
+
+        const ElbowAngle =
+        {
+          "type": "ElbowAngle",
+          "message0": "Value for Elbow Motor %1",
+          "args0": [
+            {
+              "type": "input_value",
+              "name": "MotorValue",
+              "check": "Number"
+            },
+          ],
+          'deletable': false,
+          'previousStatement': null,
+          'nextStatement': null,
+          "inputsInline": true,
+          "colour": 120,
+          "tooltip": "",
+          "helpUrl": ""
+        }
+
+        const getRvalue = {
+            'type': 'getRvalue',
+            'message0': 'R value',
+            'args0': [
+              
+            ],
+            'output': null,
+            "colour": 120,
+            'helpUrl': '',
+            'tooltip': '',
+            
+          }
+
+          const getHvalue = {
+            'type': 'getHvalue',
+            'message0': 'H value',
+            'args0': [
+              
+            ],
+            'output': null,
+            "colour": 120,
+            'helpUrl': '',
+            'tooltip': '',
+            
+          }
+
+          const getAvalue = {
+            'type': 'getAvalue',
+            'message0': 'A value',
+            'args0': [
+              
+            ],
+            'output': null,
+            "colour": 120,
+            'helpUrl': '',
+            'tooltip': '',
+            
+          }
       
 // Create the block definitions for the JSON-only blocks.
 // This does not register their definitions with Blockly.
 // This file has no side effects!
 const blocks = Blockly.common.createBlockDefinitionsFromJsonArray(
-    [math_trig_cst,math_single_cst,math_constant_cst,math_round_cst]);
+    [math_trig_cst,math_single_cst,math_constant_cst,math_round_cst,BaseAngle,ShoulderAngle,ElbowAngle,getRvalue,getHvalue,getAvalue]);
 
 
 

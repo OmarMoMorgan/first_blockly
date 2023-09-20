@@ -52,7 +52,7 @@ const runCode = () => {
 };
 
 // Load the initial state from storage and run the code.
-//load(ws);
+load(ws);
 //runCode();
 
 //here we are making the new port
@@ -63,7 +63,7 @@ ws.addChangeListener((e) => {
   // UI events are things like scrolling, zooming, etc.
   // No need to save after one of these.
   if (e.isUiEvent) return;
-  save(ws);
+  //save(ws);
 });
 
 
