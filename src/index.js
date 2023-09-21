@@ -18,6 +18,7 @@ const {javascriptGenerator} = require('blockly/javascript');
 const { save, load } = require('./serialization');
 const { toolbox } = require('./toolbox');
 const fs = require('fs');
+const path = require('path');
 const {makeSerialPort , writeSerialPortSimple} = require("./util/Sender")
 const {listSerialPorts} = require("./util/listSerialPorts");
 const { dialog } = require('electron');
@@ -25,6 +26,7 @@ const { log } = require('console');
 require('./custom_category_es6');
 const { ipcRenderer } = require('electron');
 require("./custom-dialog");
+const {readAndCreateBlocksFromFile} = require('./util/GcodeToBlocks');
 
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks(blocks);
@@ -37,6 +39,7 @@ const blocklyDiv = document.getElementById('blocklyDiv');
 const run_btn = document.getElementById('run_btn');
 const Board_port = document.getElementById('Board_port');
 const custom_eqn = document.getElementById('custom_eqn');
+const getGcode = document.getElementById('getGcode');
 
 var port;
 var lastPort ="";
@@ -135,7 +138,12 @@ Board_port.addEventListener('click',()=>{
 //     port = makeSerialPort(Board_port.value);
 // })
 
-
+getGcode.addEventListener('click',()=>{
+  //console.log(__dirname);
+  const filePath = path.join(__dirname,'TestG.gcode')
+  console.log(filePath);
+  readAndCreateBlocksFromFile(filePath,ws);
+})
 
 
 
